@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  expenseservice:
+    build:
+      context: ./ExpenseService
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - expense-net
+
+  reportservice:
+    build:
+      context: ./ReportService
+      dockerfile: Dockerfile
+    depends_on:
+      - expenseservice
+    ports:
+      - "8081:80"
+    networks:
+      - expense-net
+
+networks:
+  expense-net:
+    driver: bridge
