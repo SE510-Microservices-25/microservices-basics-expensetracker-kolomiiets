@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "3qCxIH35fCC80fnpZVK7M+L5Ulrif+kgMDQMdnXrTwA=",
+  "Source": "ReportService",
+  "BasePath": "_content/ReportService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ExpenseService/ExpenseService.csproj",
+      "Version": 2,
+      "Source": "ExpenseService",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
