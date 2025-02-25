@@ -1,25 +1,32 @@
-using Microsoft.AspNetCore.Mvc;
 using ExpenseService.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ExpenseService.Data;
 
 namespace ExpenseService.Controllers
 {
-    [Route("new-expenses")]
+    [Route("expense-tracker/new")]
     [ApiController]
     public class ExpenseController : ControllerBase
     {
-        private static List<Expense> _expenses = new();
+        private readonly AppDbContext _context;
+
+        public ExpenseController(AppDbContext context)
+        {
+            _context = context;
+        }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Expense>> GetExpenses()
+        public async Task<ActionResult<IEnumerable<Expense>>> GetExpenses()
         {
-            return Ok(_expenses);
+            return await _context.Expenses.ToListAsync();
         }
 
         [HttpPost]
-        public ActionResult AddExpense([FromBody] Expense expense)
+        public async Task<ActionResult> AddExpense([FromBody] Expense expense)
         {
-            expense.Id = _expenses.Count + 1;
-            _expenses.Add(expense);
+            _context.Expenses.Add(expense);
+            await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetExpenses), new { id = expense.Id }, expense);
         }
     }

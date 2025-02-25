@@ -1,6 +1,3 @@
-/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/ExpenseService.deps.json
-/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/ExpenseService.runtimeconfig.json
-/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/ExpenseService
 /Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/appsettings.Development.json
 /Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/appsettings.json
 /Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/ReportService
@@ -13,8 +10,6 @@
 /Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
 /Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
-/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/ExpenseService.dll
-/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/ExpenseService.pdb
 /Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/obj/Debug/net8.0/ReportService.csproj.AssemblyReference.cache
 /Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/obj/Debug/net8.0/ReportService.GeneratedMSBuildEditorConfig.editorconfig
 /Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/obj/Debug/net8.0/ReportService.AssemblyInfoInputs.cache
@@ -37,3 +32,17 @@
 /Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/obj/Debug/net8.0/ReportService.pdb
 /Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/obj/Debug/net8.0/ReportService.genruntimeconfig.cache
 /Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/obj/Debug/net8.0/ref/ReportService.dll
+/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Microsoft.Extensions.Configuration.dll
+/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll
+/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Microsoft.Extensions.Configuration.Binder.dll
+/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Microsoft.Extensions.Diagnostics.dll
+/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll
+/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Microsoft.Extensions.Http.dll
+/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll
+/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll
+/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/Microsoft.Extensions.Primitives.dll
+/Users/zakerden1234/Desktop/microservices-basics-expensetracker-kolomiiets/ReportService/bin/Debug/net8.0/System.Diagnostics.DiagnosticSource.dll

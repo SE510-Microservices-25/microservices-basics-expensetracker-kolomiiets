@@ -1,22 +1,25 @@
-version: "3.8"
+version: '3.8'
+
 services:
   expenseservice:
     build:
       context: ./ExpenseService
-      dockerfile: Dockerfile
     ports:
       - "8080:80"
+    volumes:
+      - ./ExpenseService/expenses.db:/app/expenses.db
     networks:
       - expense-net
 
   reportservice:
     build:
       context: ./ReportService
-      dockerfile: Dockerfile
     depends_on:
       - expenseservice
     ports:
-      - "8081:80"
+      - "8081:81"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     networks:
       - expense-net
 
