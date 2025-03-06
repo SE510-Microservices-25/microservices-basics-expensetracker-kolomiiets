@@ -2,10 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Text.Json;
 using ReportService.Models;
+using System.Linq;
 
 namespace ReportService.Controllers
 {
-    [Route("expense-report")]
+    [Route("expense-tracker")]
     [ApiController]
     public class ReportController : ControllerBase
     {
@@ -17,9 +18,9 @@ namespace ReportService.Controllers
         }
 
         [HttpGet("summary")]
-        public async Task<ActionResult<ExpenseReport>> GetReport()
+        public async Task<ActionResult<IEnumerable<ExpenseReport>>> GetReport()
         {
-            var expenseServiceUrl = "http://expenseservice:8080/new-expenses";
+            var expenseServiceUrl = "http://expenseservice/expense-tracker/new";
 
             var response = await _httpClient.GetAsync(expenseServiceUrl);
             if (!response.IsSuccessStatusCode)
@@ -28,17 +29,35 @@ namespace ReportService.Controllers
             }
 
             var expensesJson = await response.Content.ReadAsStringAsync();
-            var expenses = JsonSerializer.Deserialize<List<Expense>>(expensesJson);
+            Console.WriteLine(expensesJson);
 
-            var totalAmount = expenses.Sum(e => e.Amount);
-
-            var report = new ExpenseReport
+            var expenses = JsonSerializer.Deserialize<List<Expense>>(expensesJson, new JsonSerializerOptions
             {
-                Category = "All",
-                TotalAmount = totalAmount
-            };
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            });
 
-            return Ok(report);
+            if (expenses == null || !expenses.Any())
+            {
+                return NotFound("No expenses found.");
+            }
+
+            foreach (var expense in expenses)
+            {
+                if (string.IsNullOrEmpty(expense.Category))
+                {
+                    expense.Category = "Unknown";
+                }
+            }
+
+            var groupedByCategory = expenses
+                .GroupBy(e => e.Category)
+                .Select(g => new ExpenseReport
+                {
+                    Category = g.Key,
+                    TotalAmount = g.Sum(e => e.Amount)
+                }).ToList();
+
+            return Ok(groupedByCategory);
         }
     }
 }
