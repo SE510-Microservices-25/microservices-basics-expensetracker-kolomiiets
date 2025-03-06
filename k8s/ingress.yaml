@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: expense-tracker-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: expensetracker.local
+      http:
+        paths:
+          - path: /expense-tracker
+            pathType: Prefix
+            backend:
+              service:
+                name: expense-service
+                port:
+                  number: 80
+          - path: /report
+            pathType: Prefix
+            backend:
+              service:
+                name: report-service
+                port:
+                  number: 80
