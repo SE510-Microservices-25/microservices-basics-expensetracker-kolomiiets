@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Text.Json;
@@ -8,6 +9,7 @@ namespace ReportService.Controllers
 {
     [Route("expense-tracker")]
     [ApiController]
+    [Authorize]
     public class ReportController : ControllerBase
     {
         private readonly HttpClient _httpClient;
