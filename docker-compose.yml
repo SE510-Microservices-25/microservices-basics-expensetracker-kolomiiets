@@ -29,6 +29,19 @@ services:
     networks:
       - expense-net
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - expense-net
+
   expenseservice:
     build:
       context: ./ExpenseService
@@ -39,9 +52,13 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - Keycloak__Authority=http://keycloak:8080/realms/MyRealm
-      - Keycloak__ClientId=dotnet-api
+      - Keycloak__ClientId=expense-service
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_USER=guest
+      - RABBITMQ_PASS=guest
     depends_on:
       - keycloak
+      - rabbitmq
     networks:
       - expense-net
 
@@ -55,7 +72,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - Keycloak__Authority=http://keycloak:8080/realms/MyRealm
-      - Keycloak__ClientId=dotnet-api
+      - Keycloak__ClientId=report-service
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_USER=guest
+      - RABBITMQ_PASS=guest
     networks:
       - expense-net
 

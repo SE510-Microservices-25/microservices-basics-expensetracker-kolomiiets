@@ -7,20 +7,20 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: expensetracker.local
+    - host: expense-tracker.local
       http:
         paths:
-          - path: /expense-tracker
+          - path: /api/expenses
             pathType: Prefix
             backend:
               service:
                 name: expense-service
                 port:
                   number: 80
-          - path: /report
+          - path: /api/reports
             pathType: Prefix
             backend:
               service:
                 name: report-service
                 port:
-                  number: 80
+                  number: 81

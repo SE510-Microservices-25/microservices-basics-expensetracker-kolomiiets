@@ -1,4 +1,5 @@
 using ExpenseService.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ExpenseService.Data;
@@ -7,6 +8,7 @@ namespace ExpenseService.Controllers
 {
     [Route("expense-tracker/new")]
     [ApiController]
+    [Authorize]
     public class ExpenseController : ControllerBase
     {
         private readonly AppDbContext _context;

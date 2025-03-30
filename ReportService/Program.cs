@@ -1,3 +1,4 @@
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 
@@ -5,11 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 var keycloakAuthority = "http://localhost:8080/realms/MyRealm";
 var keycloakClientId = "report-service";
+var rabbitMqHost = Environment.GetEnvironmentVariable("RABBITMQ_HOST") ?? "rabbitmq";
+var rabbitMqUser = Environment.GetEnvironmentVariable("RABBITMQ_USER") ?? "guest";
+var rabbitMqPass = Environment.GetEnvironmentVariable("RABBITMQ_PASS") ?? "guest";
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// Додаємо Swagger із підтримкою OAuth2 (Keycloak)
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo { Title = "Report Service API", Version = "v1" });
@@ -49,7 +52,6 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// Додаємо аутентифікацію через Keycloak
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -60,6 +62,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 builder.Services.AddHttpClient();
+
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(rabbitMqHost, h =>
+        {
+            h.Username(rabbitMqUser);
+            h.Password(rabbitMqPass);
+        });
+    });
+});
 
 var app = builder.Build();
 
