@@ -12,6 +12,7 @@ var rabbitMqPass = Environment.GetEnvironmentVariable("RABBITMQ_PASS") ?? "guest
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
 builder.Services.AddSwaggerGen(options =>
 {
